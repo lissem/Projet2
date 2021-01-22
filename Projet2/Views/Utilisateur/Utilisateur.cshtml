@@ -1,0 +1,110 @@
+﻿@model Projet2.Models.utilisateur
+   
+ @ViewBag.Title = "Utilisateur";
+
+
+<h2>Inscription à Pand'ami</h2>
+
+
+<p>Remplissez le formulaire ci-dessous pour accéder aux demandes en cours </p>
+<hr />
+<form id="formUtilisateur" name="formUtilisateur" action="" method="post">
+
+    if (Model != null)
+    {
+    <input type="hidden" name="id_utilisateur" id="id_utilisateur" value="@Model.id_utilisateur)" />
+    }
+    else
+    {
+    <input type="hidden" name="id_utilisateur" id="id_utilisateur" value="50" />
+    }
+
+    <table>
+
+        <tr>
+            <td><label>Nom:</label></td>
+            <td>
+                <input id="nom" name="nom" type="text" value="@(Model != null ? Model.nom : "")" />
+            </td>
+        </tr>
+        <tr>
+            <td><label>Prenom:</label></td>
+            <td>
+                <input id="prenom" name="prenom" type="text" value="@(Model != null ? Model.prenom : "")" />
+            </td>
+        </tr>
+        <tr>
+            <td><label>Id-Genre:</label></td>
+            <td>
+                <select name="don">
+                    <option>Homme</option>
+                    <option>Femme</option>
+
+                </select>
+            </td>
+        <tr>
+        <tr>
+            <td><label>Date de naissance:</label></td>
+            <td>
+                <input id="date_naissance" name="date_naissance" value="Model.date_naissance" />
+            </td>
+        </tr>
+        <tr>
+            <td><label>Adresse:</label></td>
+            <td>
+                <input id="adresse" name="adresse" type="text" value="@(Model != null ? Model.adresse : "")" />
+            </td>
+        </tr>
+        <tr>
+            <td><label>Vile:</label></td>
+            <td>
+                <input id="id_ville" name="id_ville" type="text" value="@Model.id_ville" />
+            </td>
+        </tr>
+        <tr>
+            <td><label>Adresse electronique:</label></td>
+            <td>
+                <input id="email" name="email" type="email" value="@(Model != null ? Model.email : "")" />
+            </td>
+        </tr>
+        <tr>
+            <td><label>Date inscription:</label></td>
+            <td>
+                <input id="date_inscription" name="date_inscription" value="@Model.date_inscription" />
+            </td>
+        </tr>
+
+
+    </table>
+</form>
+
+<input type="submit" nom="enregistrer" id="enregistrer" value="valider" />
+<hr />
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <tr>
+            <th>Nom</th>
+            <th>Date inscription</th>
+        </tr>
+        @foreach (var data in ViewBag.listeUtilisateur)
+        {
+            <tr>
+                <td>@data.nom</td>
+                <td>@data.date_inscription</td>
+
+            </tr>
+        }
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
